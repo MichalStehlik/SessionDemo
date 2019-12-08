@@ -1,0 +1,13 @@
+﻿@page
+@model SessionDemo.SelectionModel
+@{
+    ViewData["Title"] = "Selection";
+}
+
+<h1>Selection</h1>
+<ul>
+@foreach(var i in Model.SelectedIds)
+{
+    <li>@i</li>
+}
+</ul>

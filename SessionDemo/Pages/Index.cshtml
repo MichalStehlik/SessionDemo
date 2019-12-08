@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<table class="table table-striped">
+    <tbody>
+        @foreach(var s in Model.Students)
+        {
+        <tr>
+            <td>@s.FirstName</td>
+            <td>@s.LastName</td>
+            <td>@s.Classroom</td>
+            <td><a asp-page-handler="store" asp-route-id="@s.Id" class="btn btn-success btn-sm">Add</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
