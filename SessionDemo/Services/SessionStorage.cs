@@ -7,7 +7,7 @@ using SessionDemo.Helpers;
 
 namespace SessionDemo.Services
 {
-    public class SessionStorage<T> where T: new()
+    public class SessionStorage<T>
     {
         readonly ISession _session;
 
@@ -19,7 +19,7 @@ namespace SessionDemo.Services
         public T LoadOrCreate(string key)
         {
             T result = _session.Get<T>(key);
-            if (result == null) result = new T();
+            if (typeof(T).IsClass && result == null) result = (T)Activator.CreateInstance(typeof(T));
             return result;
         }
 
